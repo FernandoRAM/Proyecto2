@@ -3,7 +3,7 @@
 	padding: 0;
 }
 :root{
-	--color-principal: linear-gradient(to right, #7b4397, #dc2430);
+	--color-principal: #FF8F00; 
 	--color-contraste: white;
 	--color-fondo: #DDE3E6;
 	--color-diferente: linear-gradient(to right, #136a8a, #267871);

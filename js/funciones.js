@@ -31,10 +31,13 @@ function login(){
 		}
 	}
 
+
+
 	function cargarContactos(){
 	if(!localStorage.getItem('idUsuario')){
 		window.location.assign('login.html')
 	}
+	crearContactos()
 }
 
 
@@ -42,4 +45,45 @@ function cerrarSesion(){
 
 	localStorage.removeItem('idUsuario')
 	window.location.assign('login.html')
+}
+
+
+function crearContactos(){
+	document.querySelector('section').style.opacity="1";
+	document.querySelector('h1').style.opacity="1";
+	document.querySelector('i').style.opacity="1";
+
+	contactosAjax = new XMLHttpRequest();
+	contactosAjax.open('GET','http://192.168.1.77:80/PROYECTO2/php/contactos.php');
+	contactosAjax.send();
+	contactosAjax.onreadystatechange = function(){
+		if (contactosAjax.readyState == 4 && contactosAjax.status == 200){
+			contacto = JSON.parse(contactosAjax.responseText);
+			console.log(contacto)
+		for(i=0; i<contacto.length; i++){
+			if (contacto[i].id != localStorage.getItem('idUsuario')) {
+				div = "<div class='contacto oculto' "+
+				"onclick='verChat(this.id)' id='"+contacto[i].id+"'>"+
+				"<div class='contacto-img'><img src='"+contacto[i].foto+"'></div>"+
+				"<div class='contacto-nombre'>"+contacto[i].nombre+"</div>"+
+				"<div class='contacto-estado'>"+contacto[i].rate+"</div>"+
+				"</div>";
+				document.querySelector('section').innerHTML += div;
+			}
+		}
+			contactos = document.querySelectorAll('.contacto');
+			i=0;
+			animacionContactos();
+		}
+	}
+}
+
+function animacionContactos(){
+	if (i<contactos.length) {
+		contactos[i].classList.remove('oculto')
+		i++
+		setTimeout(function(){
+			animacionContactos();
+		},100)
+	}
 }
