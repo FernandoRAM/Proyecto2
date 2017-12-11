@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MENSAJES</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<meta http-equiv="Content-Security-Policy" content="
+	default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src *; font-src *; connect-src *">
+	<script src="js/funciones.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+
+</head>
+<body>
+
+	<div id="circulo" ></div>
+
+	<nav>
+		<i class="fa fa-address-book" style="opacity: 0; transition: .3s all;"></i>
+		<h1 style="opacity: 0; transition: .3s all;">Contactos</h1>
+		<h1 id="Cerrar" onclick="cerrarSesion()">Cerrar Sesión</h1>
+	</nav>
+
+	<section style="opacity: 0; transition: .3s all;">
+		
+	</section>
+
+<script>
+	//INICIALIZAR LA VENTANA
+	window.addEventListener('load', cargarContactos, true);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+*{
+	margin:0;
+	padding: 0;
+}
+:root{
+	--color-principal: linear-gradient(to right, #7b4397, #dc2430);
+	--color-contraste: white;
+	--color-fondo: #DDE3E6;
+	--color-diferente: linear-gradient(to right, #136a8a, #267871);
+}
+
+p{
+	float: left;
+	width: 50%;
+	background: rgba(255,255,255,.8);
+	color: rgba(0,0,0,.7);
+	margin-top: 10px;
+	text-align: center;
+	height: 40px;
+	border-radius: 20px;
+	margin-left: 25%;
+	opacity: 0;
+	transition:.4s all;
+	line-height: 40px;
+}
+body,html{
+	
+	height: 100%;
+}
+	.login{
+		width: 100%;
+		height: 100%;
+		float: left;
+		background: var(--color-principal);
+		padding-top: 200px;
+	}
+
+	input{
+		float: left;
+		width: 80%;
+		margin-left: 10%;
+		height: 40px;
+		border-radius: 20px;
+		margin-top: 10px;
+		border: none;
+		background: rgba(255,255,255,.3);
+		font-size: 1em;
+		color: white;
+		padding-left: 10px;
+		box-sizing: border-box;
+		outline: none;
+	}
+
+	button{
+		width: 50%;
+		margin-left: 25%;
+		float: left;
+		background: transparent;
+		border: 2px solid white;
+		border-radius: 20px;
+		height: 40px;
+		margin-top: 40px;
+		font-size: 1em;
+		color: white;
+		outline: none;
+	}
+
+
+nav{
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 60px;
+	background: var(--color-principal);
+	color: var(--color-contraste);
+	text-align: center;
+	line-height: 60px;
+	font-size: 1.3em;
+}
+
+section{
+	position: fixed;
+	left: 0px;
+	top: 60px;
+	width: 100%;
+	height: calc(100% - 60px);
+	background: var(--color-fondo);
+	overflow-y: scroll;
+}
+
+.contacto{
+	width: calc(100% - 20px);
+	margin-left: 10px;
+	float: left;
+	margin-top: 10px;
+	height: 60px;
+	background: white;
+}
+
+	.contacto-img{
+		width:50px;
+		height: 50px;
+		margin-top: 5px;
+		margin-left: 5px;
+		float: left;
+	}
+		.contacto-img img{
+			width: 100%;
+			border-radius: 50%;
+
+		}
+
+
+
+	.contacto-nombre{
+		margin-left: 5px;
+		float: left;
+		width: calc(100% - 60px);
+		height: 30px;
+		line-height: 30px;
+		font-size: 1.1em;
+		color: rgba(0,0,0,.8);
+	}
+
+	.contacto-estado{
+		float: left;
+		margin-left: 5px;
+		width: calc(100% - 60px);
+		height: 30px;
+		font-size: .9em;
+		color: rgba(0,0,0,.4);
+	}
+
+article{
+	width: 100%;
+	height: calc(100% - 60px - 80px);
+	background: var(--color-fondo);
+	position: fixed;
+	top: 60px;
+	left: 0px;
+	overflow: scroll;
+}
+footer{
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	height: 80px;
+	background: var(--color-fondo);
+}
+	footer>textarea{
+		width: calc(100% - 80px);
+		height: 60px;
+		margin-top: 10px;
+		margin-left: 10px;
+		float: left;
+		border-radius: 30px 0px 0px 30px;
+		border: none;
+		outline: none;
+		opacity: .7;
+		transition: .3s all;
+		font-size: 1.1em;
+		box-sizing: border-box;
+		resize: none;
+		padding-left: 20px;
+		padding-top: 10px;
+	}
+	footer>textarea:focus{
+		opacity: 1;
+	}
+
+	footer>button{
+		float: left;
+		width: 60px;
+		height: 60px;
+		border-radius: 0px 30px 30px 0px;
+		border: none;
+		outline: none;
+		margin-top: 10px;
+		margin-left: 0px;
+		font-size: 1.5em;
+		background: var(--color-principal);
+		color: var(--color-contraste);
+	}
+
+	.msj{
+		max-width: calc(50% + 10px);
+		clear: both;/*DESPEJAR EN AMBOS LADOS DEL ELEMENTO*/
+		padding: 5px;
+		margin:10px 10px 0px 10px;
+		border-radius: 10px;
+		color: var(--color-contraste);
+	}
+
+	.entrante{
+		float: left;
+		background: var(--color-diferente);
+	}
+
+	.saliente{
+		float: right;
+		background: var(--color-principal);
+	}
+
+	nav>i{
+		float: left;
+		height: 90px;
+		width: 30px;
+		font-size: 1.5em !important;
+		line-height: 60px !important;
+	}
+
+	nav>img{
+		float: left;
+		width: 40px;
+		margin-left: 5px;
+		margin-top: 10px;
+		height: 40px;
+		border-radius: 50%;
+	}
+
+	nav>h1{
+		font-size: 1em;
+		font-weight: lighter;
+		float: left;
+		margin-left: 5px;
+	}
+
+.oculto{
+	margin-left:100px !important;
+	opacity: 0;
+}
+/*EL MISMO SELECTOR QUE LA LINEA 34*/
+.contacto{
+	transition: .3s all;
+}
+#circulo{
+	width: 500px;
+	height: 500px;
+	position: fixed;
+	left: calc(50% - 250px);
+	top: calc(50% - 250px);
+	background: var(--color-principal);
+	border-radius: 50%;
+	z-index: 9999;
+	transform: scale(.001);
+	transition: .3s all;
+}
+	.full{
+		transform: scale(2) !important;
+	}
+
+.msj{
+	transition: .3s all;
+}
+
+.escondido{
+	opacity: 0;
+	margin-top: 50px;
+}
+#Cerrar{
+	float: right;
+	margin-right: 15px;
+}
