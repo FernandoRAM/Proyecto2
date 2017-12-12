@@ -204,3 +204,34 @@ function cargarFoto(){
 		}
 	}
 }
+
+function cargarDatos(){
+
+	idUser = localStorage.getItem('idRate');
+
+	datosAjax = new XMLHttpRequest();
+	datosAjax.open('GET','http://192.168.1.77:80/PROYECTO2/php/datos.php?&id='+idUser);
+	datosAjax.send();
+	datosAjax.onreadystatechange = function(){
+		if (datosAjax.readyState == 4 && datosAjax.status == 200){
+			dato = JSON.parse(datosAjax.responseText);
+			console.log(dato);
+
+			for(i=0; i<dato.length; i++){
+
+				div = "<h2>"+dato[i].nombre+"</h2>"+
+				"<h2>Promedio</h2>"+
+
+				"<h2>Estrellitas para calificar</h2>";
+				document.querySelector('article').innerHTML += div;
+									
+			}
+
+
+			
+		
+		}
+	}
+
+
+}
