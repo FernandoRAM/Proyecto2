@@ -1,35 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>RATE-ME</title>
+	<title>MENSAJES</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<script src="js/funciones.js"></script>
 	<meta http-equiv="Content-Security-Policy" content="
 	default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src *; font-src *; connect-src *">
-	<script src="js/funciones.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
 
 </head>
 <body>
-
-
+	
 	<nav>
+		<i class="fa fa-angle-left" onclick="regresar()"></i>
 		
-		<h1 style="opacity: 0; transition: .3s all;">Rate-Me</h1>
-
-		<h1 id="Cerrar" onclick="cerrarSesion()">Cerrar Sesión</h1>
+		<h1 id="nombre">Rate-Me</h1>
 	</nav>
 
-	<section >
+	<article id="contenedor">
+
+		<img src="img/imagen.png">
+		<h2>Nombre de Uusario</h2>
+		<h2>4.5</h2>
+		<h2>Estrellitas para calificar</h2>
 		
-	</section>
+	</article>
+
+	<footer>
+		<button>Calificar</button>
+	</footer>
+</body>
 
 <script>
-	//INICIALIZAR LA VENTANA
-	window.addEventListener('load', cargarContactos, true);
+	// window.addEventListener('load',cargarUsuario,true);
 </script>
-
-</body>
 </html>
