@@ -184,12 +184,23 @@ function cargarFoto(){
 		if (fotoAjax.readyState == 4 && fotoAjax.status == 200){
 			foto = JSON.parse(fotoAjax.responseText);
 			console.log(foto);
-		for(i=0; i<foto.length; i++){
+			if (foto.length>0) {
+					for(i=0; i<foto.length; i++){
 
-				div = "<img src="+foto[i].direccion+">";
-				document.querySelector('article').innerHTML += div;
-				
+									div = "<img src="+foto[i].direccion+">";
+									document.querySelector('article').innerHTML += div;
+									
+								}
+
+
+			}else{
+
+				div = "<img src='img/default.png'>";
+									document.querySelector('article').innerHTML += div;
+
+
 			}
+		
 		}
 	}
 }
