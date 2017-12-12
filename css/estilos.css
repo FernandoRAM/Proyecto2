@@ -64,7 +64,19 @@ body,html{
 		color: white;
 		outline: none;
 	}
-
+	input{
+		width: 50%;
+		margin-left: 25%;
+		float: left;
+		background: transparent;
+		border: 2px solid white;
+		border-radius: 20px;
+		height: 40px;
+		margin-top: 40px;
+		font-size: 1em;
+		color: white;
+		outline: none;
+	}
 
 nav{
 	position: fixed;
@@ -96,6 +108,7 @@ section{
 	margin-top: 10px;
 	height: 60px;
 	background: white;
+	border-radius: 10px;
 }
 
 	.contacto-img{
@@ -115,8 +128,9 @@ section{
 
 	.contacto-nombre{
 		margin-left: 5px;
+		margin-top: 20px;
 		float: left;
-		width: calc(100% - 60px);
+		width: 60px;
 		height: 30px;
 		line-height: 30px;
 		font-size: 1.1em;
@@ -124,9 +138,11 @@ section{
 	}
 
 	.contacto-estado{
-		float: left;
-		margin-left: 5px;
-		width: calc(100% - 60px);
+		float: right;
+		right: 0px;
+		text-align: right;
+		margin-top: 25px;
+		width: calc(100% - 100px);
 		height: 30px;
 		font-size: .9em;
 		color: rgba(0,0,0,.4);

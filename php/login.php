@@ -5,6 +5,7 @@ $password = $_GET['p'];
 $conexion = new mysqli('localhost','root','','rateme');
 $checklogin = "SELECT * FROM usuarios WHERE
 				correoUsuario = '$usuario' AND pass = '$password'";
+// echo($checklogin);
 $resultados = $conexion->query($checklogin);
 
 if (mysqli_num_rows($resultados)>0) {

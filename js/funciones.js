@@ -61,7 +61,6 @@ function crearContactos(){
 			if (contacto[i].id != localStorage.getItem('idUsuario')) {
 				div = "<div class='contacto oculto' "+
 				"onclick='verContacto(this.id)' id='"+contacto[i].id+"'>"+
-				"<div class='contacto-img'><img src='"+contacto[i].foto+"'></div>"+
 				"<div class='contacto-nombre'>"+contacto[i].nombre+"</div>"+
 				"<div class='contacto-estado'>"+contacto[i].rate+"</div>"+
 				"</div>";
@@ -108,7 +107,6 @@ function cargarUsuario(){
 			if (usuario[i].id != localStorage.getItem('idUsuario')) {
 				div = "<div class='usuario' "+
 				"onclick='verContacto(this.id)' id='"+usuario[i].id+"'>"+
-				"<div class='contacto-img'><img src='"+usuario[i].foto+"'></div>"+
 				"<div class='contacto-nombre'>"+usuario[i].nombre+"</div>"+
 				"<div class='contacto-estado'>"+usuario[i].rate+"</div>"+
 				"</div>";
@@ -117,4 +115,32 @@ function cargarUsuario(){
 			}
 		}
 	}
+}
+function registro(){
+	window.location.assign('registro.html')
+}
+function login2(){
+	window.location.assign('login.html')
+}
+
+function registrar(){
+	correo = document.getElementById('correo').value;
+	user = document.getElementById('usuario').value;
+	pass = document.getElementById('password').value;
+
+	if(usuario != "" && password != "" && correo != "") {
+			//REGISTRAR
+			logAjax = new XMLHttpRequest();
+			logAjax.open('GET','http://192.168.1.77:80/PROYECTO2/php/registro.php?u='+user+'&p='+pass+'&c='+correo);
+			logAjax.send();
+			logAjax.onreadystatechange = function(){
+				if (logAjax.readyState==4 && logAjax.status == 200) {
+					if (logAjax.responseText!="0") {
+						window.location.assign('login.html')
+					}else{
+
+					}
+				}
+			}	
+		}
 }

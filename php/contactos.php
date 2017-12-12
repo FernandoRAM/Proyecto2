@@ -10,9 +10,9 @@
 	$arreglo = array();
 	while ($contacto = $respuesta->fetch_object()) {
 		array_push($arreglo, array(
-			"foto"=>$contacto->foto,
 			"nombre"=>utf8_decode($contacto->nombreUsuario),
 			"id"=>$contacto->idUsuario,
+			// "rate"=>$contacto->rate
 		));
 	}
 	//IMPRIMIR LA RESPUESTA EN JSON
