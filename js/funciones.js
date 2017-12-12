@@ -173,3 +173,23 @@ item = document.getElementById('foto');
 			}	
 		
 }
+
+function cargarFoto(){
+	idUser = localStorage.getItem('idRate');
+
+	fotoAjax = new XMLHttpRequest();
+	fotoAjax.open('GET','http://192.168.1.77:80/PROYECTO2/php/foto.php?&id='+idUser);
+	fotoAjax.send();
+	fotoAjax.onreadystatechange = function(){
+		if (fotoAjax.readyState == 4 && fotoAjax.status == 200){
+			foto = JSON.parse(fotoAjax.responseText);
+			console.log(foto);
+		for(i=0; i<foto.length; i++){
+
+				div = "<img src="+foto[i].direccion+">";
+				document.querySelector('article').innerHTML += div;
+				
+			}
+		}
+	}
+}
