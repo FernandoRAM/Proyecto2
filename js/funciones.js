@@ -144,3 +144,32 @@ function registrar(){
 			}	
 		}
 }
+
+function set(){
+	id = localStorage.getItem('idUsuario');
+	document.getElementById('up').setAttribute("action","php/upload.php/?&id="+id)
+}
+
+function foto(){
+window.location.assign('foto.html')
+}
+
+function validarF(){
+id = localStorage.getItem('idUsuario');
+item = document.getElementById('foto');
+	
+			//REGISTRAR
+			logAjax = new XMLHttpRequest();
+			logAjax.open('GET','http://192.168.1.77:80/PROYECTO2/php/validarFoto.php?id='+id);
+			logAjax.send();
+			logAjax.onreadystatechange = function(){
+				if (logAjax.readyState==4 && logAjax.status == 200) {
+					if (logAjax.responseText == "no") {
+						item.style.visibility = 'hidden';
+					}else{
+
+					}
+				}
+			}	
+		
+}

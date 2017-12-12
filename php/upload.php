@@ -1,5 +1,6 @@
 <?php
 $target_dir = "../img/";
+$dir = "img/". basename($_FILES["fileToUpload"]["name"]);
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -38,15 +39,13 @@ if ($uploadOk == 0) {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     	
         echo "ok";
-        //REGISTRO
-        $usuario = $_GET['u'];
-		$password = $_GET['p'];
-		$correo = $_GET['c'];
-
-		$conexion = new mysqli('localhost','root','','rateme');
-		$checklogin = "INSERT INTO usuarios (nombreUsuario, correoUsuario, pass, foto) VALUES ($usuario, $correo, $password, $target_file)";
-		$resultados = $conexion->query($checklogin);
-
+        $id = $_GET['id'];
+        $conexion = new mysqli('localhost','root','','rateme');
+        $registro = "INSERT INTO fotos (idFoto, foto, idUsuario) VALUES (NULL, '$dir', '$id')";
+        // echo($registro);
+        $resultados = $conexion->query($registro);
+        header('Location: ../../index.html');
+       
 		
 }else{
 	echo "0";

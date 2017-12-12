@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
 	<meta http-equiv="Content-Security-Policy" content="
-	default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src *; font-src *; connect-src *">
+	default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src *; font-src *; connect-src *">
 	<script src="js/funciones.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
@@ -14,25 +14,18 @@
 </head>
 <body>
 
+	<div class="login">
 
-	<nav>
-		
-		<h1 style="opacity: 0; transition: .3s all;">Rate-Me</h1>
-
-		<h1 id="Cerrar" onclick="cerrarSesion()">Cerrar Sesión</h1>
-	</nav>
-
-	<section >
-		
-	</section>
+	<form id="up" method="post" enctype="multipart/form-data">
+    
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload Image" name="submit">
+</form>
+	
+	</div>
 
 <script>
-	//INICIALIZAR LA VENTANA
-	window.addEventListener('load', cargarContactos, true);
-	window.addEventListener('load', validarF, true);
+	 window.addEventListener('load', set, true);
 </script>
-<button id="foto" class="botonF1" onclick="foto()">
-  <span>+</span>
-</button>
 </body>
 </html>
