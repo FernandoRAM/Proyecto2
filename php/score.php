@@ -24,7 +24,7 @@
 	
 
 	$veces = $arreglo[0]['veces'];
-	$nuevoScore = ($arreglo[0]['puntos'] + $nuevoRate)/ ($veces+1);
+	$nuevoScore = $arreglo[0]['puntos'] + $nuevoRate;
 	$nuevasVeces = $veces+1;
 	//almacenar score nuevo
 	$queryGuardar = "UPDATE puntuaciones SET puntos = $nuevoScore, veces = $nuevasVeces WHERE idUsuario = $nombreUsuario";

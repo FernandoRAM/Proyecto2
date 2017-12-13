@@ -11,7 +11,7 @@
 	//HACER ARREGLO Y VOLVERLO JSON
 	$arreglo = array();
 
-	$puntaje = "SELECT puntos FROM puntuaciones WHERE idUsuario = $idUsuario";
+	$puntaje = "SELECT puntos, veces FROM puntuaciones WHERE idUsuario = $idUsuario";
 	$respuesta2 = $conexion->query($puntaje);
 	$dato2 = $respuesta2->fetch_object();
 
@@ -20,7 +20,8 @@
 			"idUsuario"=>$dato->idUsuario,
 			"nombre"=>utf8_decode($dato->nombreUsuario),
 			"correo"=>$dato->correoUsuario,
-			"rate"=>$dato2->puntos
+			"rate"=>$dato2->puntos,
+			"veces"=>$dato2->veces
 		));
 	}
 	//IMPRIMIR LA RESPUESTA EN JSON

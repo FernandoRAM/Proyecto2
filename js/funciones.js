@@ -218,11 +218,9 @@ function cargarDatos(){
 			console.log(dato);
 
 			for(i=0; i<dato.length; i++){
-
+				rate = parseFloat(Math.round((dato[i].rate/dato[i].veces) * 100) / 100).toFixed(4);//formatea a 4 decimales
 				div = "<h2>"+dato[i].nombre+"</h2>"+
-				"<h2>Promedio</h2>"+
-
-				"<h2>Estrellitas para calificar</h2>";
+				"<h2 id='rate'>"+rate+"</h2>";
 				document.querySelector('article').innerHTML += div;
 									
 			}
