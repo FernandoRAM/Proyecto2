@@ -274,11 +274,13 @@ footer{
   transition:.3s;  
 }
 div.stars {
-  width: 270px;
+  
   display: inline-block;
   top: 70%;
+  float: left;
   position: fixed;
-  left: 35%;
+  margin-left:33%;
+  
 }
 
 input.star { display: none; }
