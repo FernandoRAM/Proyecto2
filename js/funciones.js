@@ -255,6 +255,8 @@ function score(){
 	starAjax.onreadystatechange = function(){
 		if (starAjax.readyState == 4 && starAjax.status == 200){
 
+			alert(starAjax.responseText);
+
 		}
 	}
 

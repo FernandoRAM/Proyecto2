@@ -2,26 +2,33 @@
 	
 	//OBTENER CONTACTOS DE LA BD
 	//CREAR CADENA DE CONEXIÓN
-	$nuevoRate = $_POST('rate');
-	$nombreUsuario = $_POST('idUser');
+	$nuevoRate = $_GET['rate'];
+	$nombreUsuario = $_GET['id'];
 	$conexion = new mysqli('localhost','root','','rateme');
+	
 	//CREAR LA PETICIÓN
-	$queryUsuario = "SELECT idUsuario FROM puntuaciones WHERE idUsuario = '$nombreUsuario'";
-	$idUsuario = $conexion->query($score);
+	$query = "SELECT * FROM puntuaciones WHERE idUsuario = '$nombreUsuario'";
+	echo $query;
+	$respuesta = $conexion->query($query);
 
-	$queryScore = "SELECT puntos FROM puntuaciones WHERE idUsuario = '$idUsuario'";
-	$score = $conexion->query($score);
-
-	$queryVeces = "SELECT veces FROM puntuaciones WHERE idUsuario = '$idUsuario'";
-	$veces = $conexion->query($score);
+	$arreglo = array();
+	while ($dato = $respuesta->fetch_object()) {
+		array_push($arreglo, array(
+			"puntos"=>$dato->puntos,
+			"veces"=>$dato->veces
+			// "rate"=$usuario->rateUsuario
+		));
+	}
 
 	//calcular nuevo score
-	$respuesta = $conexion->query($score);
+	
 
-	$nuevoScore = ($score + $nuevoRate)/$veces;
-
+	$veces = $arreglo[0]['veces'];
+	$nuevoScore = ($arreglo[0]['puntos'] + $nuevoRate)/ ($veces+1);
+	$nuevasVeces = $veces+1;
 	//almacenar score nuevo
-	$queryGuardar = "INSERT INTO puntuaciones ('puntos','veces') VALUES ($score, $veces+1)";
-	$conexion->query($score);
+	$queryGuardar = "UPDATE puntuaciones SET puntos = $nuevoScore, veces = $nuevasVeces WHERE idUsuario = $nombreUsuario";
+	echo $queryGuardar;
+	$conexion->query($queryGuardar);
 
-}
+?>
