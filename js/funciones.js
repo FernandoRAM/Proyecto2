@@ -12,7 +12,7 @@ function login(){
 		if(usuario != "" && password != "") {
 			//LOGEAR
 			logAjax = new XMLHttpRequest();
-			logAjax.open('GET','http://192.168.1.77:80/PROYECTO2/php/login.php?u='+usuario+'&p='+password);
+			logAjax.open('GET','http://192.168.1.73:8080/PROYECTO2/php/login.php?u='+usuario+'&p='+password);
 			logAjax.send();
 			logAjax.onreadystatechange = function(){
 				if (logAjax.readyState==4 && logAjax.status == 200) {
@@ -51,7 +51,7 @@ function cerrarSesion(){
 function crearContactos(){
 	
 	contactosAjax = new XMLHttpRequest();
-	contactosAjax.open('GET','http://192.168.1.77:80/PROYECTO2/php/contactos.php');
+	contactosAjax.open('GET','http://192.168.1.73:8080/PROYECTO2/php/contactos.php');
 	contactosAjax.send();
 	contactosAjax.onreadystatechange = function(){
 		if (contactosAjax.readyState == 4 && contactosAjax.status == 200){
@@ -97,7 +97,7 @@ function cargarUsuario(){
 	idUser = localStorage.getItem('idRate');
 
 	usuarioAjax = new XMLHttpRequest();
-	usuarioAjax.open('GET','http://192.168.1.77:80/PROYECTO2/php/usuario.php?&id='+idUser);
+	usuarioAjax.open('GET','http://192.168.1.73:8080/PROYECTO2/php/usuario.php?&id='+idUser);
 	usuarioAjax.send();
 	usuarioAjax.onreadystatechange = function(){
 		if (usuarioAjax.readyState == 4 && usuarioAjax.status == 200){
@@ -131,12 +131,12 @@ function registrar(){
 	if(usuario != "" && password != "" && correo != "") {
 			//REGISTRAR
 			logAjax = new XMLHttpRequest();
-			logAjax.open('GET','http://192.168.1.77:80/PROYECTO2/php/registro.php?u='+user+'&p='+pass+'&c='+correo);
+			logAjax.open('GET','http://192.168.1.73:8080/PROYECTO2/php/registro.php?u='+user+'&p='+pass+'&c='+correo);
 			logAjax.send();
 			logAjax.onreadystatechange = function(){
 				if (logAjax.readyState==4 && logAjax.status == 200) {
 					if (logAjax.responseText!="0") {
-						window.location.assign('login.html')
+						window.location.assign('login.html');
 					}else{
 
 					}
@@ -160,7 +160,7 @@ item = document.getElementById('foto');
 	
 			//REGISTRAR
 			logAjax = new XMLHttpRequest();
-			logAjax.open('GET','http://192.168.1.77:80/PROYECTO2/php/validarFoto.php?id='+id);
+			logAjax.open('GET','http://192.168.1.73:8080/PROYECTO2/php/validarFoto.php?id='+id);
 			logAjax.send();
 			logAjax.onreadystatechange = function(){
 				if (logAjax.readyState==4 && logAjax.status == 200) {
@@ -178,7 +178,7 @@ function cargarFoto(){
 	idUser = localStorage.getItem('idRate');
 
 	fotoAjax = new XMLHttpRequest();
-	fotoAjax.open('GET','http://192.168.1.77:80/PROYECTO2/php/foto.php?&id='+idUser);
+	fotoAjax.open('GET','http://192.168.1.73:8080/PROYECTO2/php/foto.php?&id='+idUser);
 	fotoAjax.send();
 	fotoAjax.onreadystatechange = function(){
 		if (fotoAjax.readyState == 4 && fotoAjax.status == 200){
@@ -210,7 +210,7 @@ function cargarDatos(){
 	idUser = localStorage.getItem('idRate');
 
 	datosAjax = new XMLHttpRequest();
-	datosAjax.open('GET','http://192.168.1.77:80/PROYECTO2/php/datos.php?&id='+idUser);
+	datosAjax.open('GET','http://192.168.1.73:8080/PROYECTO2/php/datos.php?&id='+idUser);
 	datosAjax.send();
 	datosAjax.onreadystatechange = function(){
 		if (datosAjax.readyState == 4 && datosAjax.status == 200){
@@ -233,5 +233,29 @@ function cargarDatos(){
 		}
 	}
 
+
+}
+
+function score(){
+	var estrellas = document.getElementsByName('star');
+	var puntaje = 0;
+	for (var i = 0, length = estrellas.length; i < length; i++){
+ 		
+ 		if (estrellas[i].checked){
+  			// do whatever you want with the checked radio
+  			puntaje = 5-i
+  			// only one radio can be logically checked, don't check the rest
+  			break;
+ 		}
+	}
+	idUser = localStorage.getItem('idRate');
+	starAjax = new XMLHttpRequest();
+	starAjax.open('GET','http://192.168.1.73:8080/PROYECTO2/php/score.php?&id='+idUser+'&rate='+puntaje);
+	starAjax.send();
+	starAjax.onreadystatechange = function(){
+		if (starAjax.readyState == 4 && starAjax.status == 200){
+
+		}
+	}
 
 }

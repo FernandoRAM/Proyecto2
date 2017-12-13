@@ -3,7 +3,7 @@
 	//OBTENER CONTACTOS DE LA BD
 	//CREAR CADENA DE CONEXIÓN
 	$nuevoRate = $_POST('rate');
-	$nombreUsuario = $_POST('usuario');
+	$nombreUsuario = $_POST('idUser');
 	$conexion = new mysqli('localhost','root','','rateme');
 	//CREAR LA PETICIÓN
 	$queryUsuario = "SELECT idUsuario FROM puntuaciones WHERE idUsuario = '$nombreUsuario'";

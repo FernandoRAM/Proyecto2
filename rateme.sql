@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 12-12-2017 a las 23:25:12
--- Versión del servidor: 10.1.28-MariaDB
--- Versión de PHP: 7.1.11
+-- Host: 127.0.0.1
+-- Generation Time: Dec 13, 2017 at 06:54 PM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,32 +17,25 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `rateme`
+-- Database: `rateme`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `fotos`
+-- Table structure for table `fotos`
 --
 
 CREATE TABLE `fotos` (
   `idFoto` int(11) NOT NULL,
-  `foto` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `foto` varchar(100) CHARACTER SET utf8 NOT NULL DEFAULT 'img/default.png',
   `idUsuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `fotos`
---
-
-INSERT INTO `fotos` (`idFoto`, `foto`, `idUsuario`) VALUES
-(2, 'img/informatica.png', 4);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `puntuaciones`
+-- Table structure for table `puntuaciones`
 --
 
 CREATE TABLE `puntuaciones` (
@@ -54,16 +45,17 @@ CREATE TABLE `puntuaciones` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `puntuaciones`
+-- Dumping data for table `puntuaciones`
 --
 
 INSERT INTO `puntuaciones` (`idUsuario`, `puntos`, `veces`) VALUES
-(2, '3.0000', 2);
+(44, '3.0000', 0),
+(45, '3.0000', 0);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -74,51 +66,59 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`idUsuario`, `nombreUsuario`, `correoUsuario`, `pass`) VALUES
-(1, 'Fernando', 'fernando@mail.com', 'filomena'),
-(2, 'Edgar', 'edgar@mail.com', '1234'),
-(3, 'Eduardo', 'eduardo@mail.com', 'filomena'),
-(4, 'Alejandro', 'alejandro@mail.com', 'filomena'),
-(5, 'Alan', 'alan@mail.com', 'alan'),
-(10, 'Diana', 'diana@mail.com', 'diana'),
-(11, 'Jefe', 'jefe@mail.com', 'jefe');
+(44, 'Edgar', 'edgar@mail.com', '123'),
+(45, 'jose', 'jose@mail.com', '123');
 
 --
--- Índices para tablas volcadas
+-- Triggers `usuarios`
+--
+DELIMITER $$
+CREATE TRIGGER `puntaje` AFTER INSERT ON `usuarios` FOR EACH ROW BEGIN
+INSERT INTO puntuaciones (idUsuario) VALUES (new.idUsuario);
+END
+$$
+DELIMITER ;
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `fotos`
+-- Indexes for table `fotos`
 --
 ALTER TABLE `fotos`
   ADD PRIMARY KEY (`idFoto`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `puntuaciones`
+--
+ALTER TABLE `puntuaciones`
+  ADD UNIQUE KEY `idUsuario` (`idUsuario`);
+
+--
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`idUsuario`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `fotos`
+-- AUTO_INCREMENT for table `fotos`
 --
 ALTER TABLE `fotos`
-  MODIFY `idFoto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
+  MODIFY `idFoto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-COMMIT;
-
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
