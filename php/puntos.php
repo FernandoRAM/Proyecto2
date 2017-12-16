@@ -1,20 +1,17 @@
 <?php
-	$idUsuario = $_GET['id'];
 	//OBTENER CONTACTOS DE LA BD
 	//CREAR CADENA DE CONEXIÓN
+	$id = $_GET['id'];
 	$conexion = new mysqli('localhost','id3997265_u758640150_root','123456','id3997265_u758640150_rate');
 	//CREAR LA PETICIÓN
-	$fotos = "SELECT * FROM fotos WHERE idUsuario = $idUsuario";
+	$contactos = "SELECT puntos FROM puntuaciones WHERE idUsuario = '$id'";
 	//EJECUTAR PETICIÓN Y GUARDAR RESPUESTA
-	$respuesta = $conexion->query($fotos);
+	$respuesta = $conexion->query($contactos);
 	//HACER ARREGLO Y VOLVERLO JSON
 	$arreglo = array();
-	while ($foto = $respuesta->fetch_object()) {
+	while ($contacto = $respuesta->fetch_object()) {
 		array_push($arreglo, array(
-			"idUsr"=>$foto->idUsuario,
-			"direccion"=>utf8_decode($foto->foto),
-			"idFoto"=>$foto->idFoto
-			// "rate"=$usuario->rateUsuario
+			"rate"=>$contacto->puntos
 		));
 	}
 	//IMPRIMIR LA RESPUESTA EN JSON

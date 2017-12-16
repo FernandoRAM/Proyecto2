@@ -2,7 +2,7 @@
 $usuario = $_GET['u'];
 $password = $_GET['p'];
 
-$conexion = new mysqli('localhost','root','','rateme');
+$conexion = new mysqli('localhost','id3997265_u758640150_root','123456','id3997265_u758640150_rate');
 $checklogin = "SELECT * FROM usuarios WHERE
 				correoUsuario = '$usuario' AND pass = '$password'";
 // echo($checklogin);

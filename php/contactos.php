@@ -1,7 +1,7 @@
 <?php
 	//OBTENER CONTACTOS DE LA BD
 	//CREAR CADENA DE CONEXIÓN
-	$conexion = new mysqli('localhost','root','','rateme');
+	$conexion = new mysqli('localhost','id3997265_u758640150_root','123456','id3997265_u758640150_rate');
 	//CREAR LA PETICIÓN
 	$contactos = "SELECT * FROM usuarios";
 	//EJECUTAR PETICIÓN Y GUARDAR RESPUESTA

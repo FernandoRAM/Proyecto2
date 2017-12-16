@@ -5,21 +5,24 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
-	<meta http-equiv="Content-Security-Policy" content="
-	default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src *; font-src *; connect-src *">
+	
 	<script src="js/funciones.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
 </head>
 <body>
 
+
 	<div class="login">
+		<i id="icon" class='fa fa fa-thumbs-o-up'></i>
+		<label>Correo Electrónico</label>
 		<input type="text" id="usuario" placeholder="correo">
+		<label>Contraseña</label>
 		<input type="password" id="password" placeholder="Password">
 		<p class="error"></p>
-		<button onclick="login()">Inicar Sesión</button>
-		<button onclick="registro()">Registrate</button>
+		<button id="botonL" onclick="login()">Inicar Sesión</button>
+		<button id="botonR" onclick="registro()">Registrate</button>
 	</div>
 <script>
 	window.addEventListener('load', validar, true);

@@ -4,7 +4,7 @@
 	//CREAR CADENA DE CONEXIÓN
 	$nuevoRate = $_GET['rate'];
 	$nombreUsuario = $_GET['id'];
-	$conexion = new mysqli('localhost','root','','rateme');
+	$conexion = new mysqli('localhost','id3997265_u758640150_root','123456','id3997265_u758640150_rate');
 	
 	//CREAR LA PETICIÓN
 	$query = "SELECT * FROM puntuaciones WHERE idUsuario = '$nombreUsuario'";

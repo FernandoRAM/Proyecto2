@@ -8,7 +8,7 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 if(isset($_POST["submit"])) {
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
+        //echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
         echo "File is not an image.";
@@ -33,19 +33,19 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 }
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
+//echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     	
-        echo "ok";
+        
         $id = $_GET['id'];
-        $conexion = new mysqli('localhost','root','','rateme');
+        $conexion = new mysqli('localhost','id3997265_u758640150_root','123456','id3997265_u758640150_rate');
         $registro = "INSERT INTO fotos (idFoto, foto, idUsuario) VALUES (NULL, '$dir', '$id')";
-        // echo($registro);
+        //echo($registro);
         $resultados = $conexion->query($registro);
-        header('Location: ../../index.html');
-       
+        echo "<script>window.history.go(-2);</script>";
+        
 		
 }else{
 	echo "0";

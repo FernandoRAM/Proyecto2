@@ -1,9 +1,10 @@
 *{
 	margin:0;
 	padding: 0;
+	font-family: 'Lato', sans-serif;
 }
 :root{
-	--color-principal: #FF8F00; 
+	--color-principal: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);; 
 	--color-contraste: white;
 	--color-fondo: #DDE3E6;
 	--color-diferente: linear-gradient(to right, #136a8a, #267871);
@@ -24,7 +25,6 @@ p{
 	line-height: 40px;
 }
 body,html{
-	
 	height: 100%;
 }
 	.login{
@@ -32,7 +32,7 @@ body,html{
 		height: 100%;
 		float: left;
 		background: var(--color-principal);
-		padding-top: 200px;
+		/*padding-top: 130px;*/
 	}
 
 	input{
@@ -61,8 +61,26 @@ body,html{
 		height: 40px;
 		margin-top: 40px;
 		font-size: 1em;
+		background: rgba(0,0,0,0.1);
 		color: white;
-		outline: none;
+		border-color: rgba(0,0,0,0.5);
+		z-index: 99999;
+	}
+
+	#botonL{
+		background: rgba(247, 222, 131,1);
+		color: black;
+		font-weight: bold;
+		font-size: 1.2em;
+	}
+	label{
+		width: 50%;
+		margin-left: 25%;
+		float: left;
+		height: auto;
+		font-size: 1.1em;
+		color: black;
+		font-weight: bold;
 	}
 	input{
 		width: 50%;
@@ -72,10 +90,11 @@ body,html{
 		border: 2px solid white;
 		border-radius: 20px;
 		height: 40px;
-		margin-top: 40px;
 		font-size: 1em;
+		margin-bottom: 20px;
+		background: rgba(0,0,0,0.1);
 		color: white;
-		outline: none;
+		border-color: rgba(0,0,0,0.5);
 	}
 
 nav{
@@ -140,7 +159,7 @@ section{
 
 	.contacto-estado{
 		float: right;
-		right: 0px;
+		margin-right: 10px;
 		text-align: right;
 		margin-top: 25px;
 		width: calc(100% - 100px);
@@ -161,17 +180,18 @@ article{
 footer{
 	width: 100%;
 	position: fixed;
-	bottom: 0px;
+	bottom: 18%;
 	left: 0px;
 	height: 80px;
 	background: var(--color-fondo);
 }
 
 	footer>button{
-		background-color: var(--color-principal);
-		border-radius: 30px 30px 30px 30px;
-		border: none;
-		margin-top: -10px;
+		background: rgba(247, 222, 131,1);
+		color: black;
+		font-weight: bold;
+		font-size: 1.2em;
+		bottom: 10px;
 	}
 
 	.msj{
@@ -250,8 +270,8 @@ footer{
 	line-height: 40px;
 }
 #contenedor>img{
-	max-height: 300px;
-	max-width: 300px;
+	max-height: 180px;
+	max-width: 180px;
 	display: block;
 	margin:0 auto 0 auto;
 }
@@ -262,7 +282,7 @@ footer{
   border-radius:100%;
   background:#F44336;
   right:0;
-  bottom:0;
+  bottom:5%;
   position:absolute;
   margin-right:16px;
   margin-bottom:16px;
@@ -273,21 +293,25 @@ footer{
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   transition:.3s;  
 }
-div.stars {
+div.stars { 
   width: 100%;
   display:inline-block;
-  top: 70%;
+  /*text-align: center;*/
+  top: 55%;
   position: absolute;
 
     right: calc(100% - 83%);
+
   
 }
 
 input.star { display: none; }
 
 label.star {
-  float: right;
-  padding: 10px;
+	width: 0% !important;
+	float: right;
+  display: inline;
+  padding: 28px;
   margin: auto;
   font-size: 36px;
   color: #444;
@@ -312,4 +336,72 @@ label.star:hover { transform: rotate(-15deg) scale(1.3); }
 label.star:before {
   content: '\f006';
   font-family: FontAwesome;
+}
+#icon{
+	float: left;
+	width: 100%;
+	height: 100px;
+	text-align: center;
+	margin-top: 70px;
+	color: rgba(0,0,0,.5);
+	font-size: 70px;
+
+}
+.otro{
+	width: 100%;
+		height: 100%;
+		float: left;
+		background: var(--color-principal);
+		padding-top: 230px;
+}
+#fileToUpload{
+	background: none !important;
+	border: none;
+
+}
+
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+    visibility: visible; /* Show the snackbar */
+
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
 }

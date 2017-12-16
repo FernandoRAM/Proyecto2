@@ -12,7 +12,7 @@ function login(){
 		if(usuario != "" && password != "") {
 			//LOGEAR
 			logAjax = new XMLHttpRequest();
-			logAjax.open('GET','http://192.168.1.73:8080/PROYECTO2/php/login.php?u='+usuario+'&p='+password);
+			logAjax.open('GET','https://torrewz.000webhostapp.com/PROYECTO2/php/login.php?u='+usuario+'&p='+password);
 			logAjax.send();
 			logAjax.onreadystatechange = function(){
 				if (logAjax.readyState==4 && logAjax.status == 200) {
@@ -51,7 +51,7 @@ function cerrarSesion(){
 function crearContactos(){
 	
 	contactosAjax = new XMLHttpRequest();
-	contactosAjax.open('GET','http://192.168.1.73:8080/PROYECTO2/php/contactos.php');
+	contactosAjax.open('GET','https://torrewz.000webhostapp.com/PROYECTO2/php/contactos.php');
 	contactosAjax.send();
 	contactosAjax.onreadystatechange = function(){
 		if (contactosAjax.readyState == 4 && contactosAjax.status == 200){
@@ -62,7 +62,7 @@ function crearContactos(){
 				div = "<div class='contacto oculto' "+
 				"onclick='verContacto(this.id)' id='"+contacto[i].id+"'>"+
 				"<div class='contacto-nombre'>"+contacto[i].nombre+"</div>"+
-				"<div class='contacto-estado'>"+contacto[i].rate+"</div>"+
+				"<i class='fa fa-user-circle-o contacto-estado'></i>"+
 				"</div>";
 				document.querySelector('section').innerHTML += div;
 			}
@@ -86,18 +86,18 @@ function animacionContactos(){
 
 function verContacto(id){
 
-	localStorage.setItem('idRate', id)
-	window.location.assign('usuario.html')
+	localStorage.setItem('idRate', id);
+	window.location.assign('usuario.html');
 }
 
 function regresar(){
-	window.location.assign('index.html')
+	window.location.assign('index.html');
 }
 function cargarUsuario(){
 	idUser = localStorage.getItem('idRate');
 
 	usuarioAjax = new XMLHttpRequest();
-	usuarioAjax.open('GET','http://192.168.1.73:8080/PROYECTO2/php/usuario.php?&id='+idUser);
+	usuarioAjax.open('GET','https://torrewz.000webhostapp.com/PROYECTO2/php/usuario.php?&id='+idUser);
 	usuarioAjax.send();
 	usuarioAjax.onreadystatechange = function(){
 		if (usuarioAjax.readyState == 4 && usuarioAjax.status == 200){
@@ -131,12 +131,19 @@ function registrar(){
 	if(usuario != "" && password != "" && correo != "") {
 			//REGISTRAR
 			logAjax = new XMLHttpRequest();
-			logAjax.open('GET','http://192.168.1.73:8080/PROYECTO2/php/registro.php?u='+user+'&p='+pass+'&c='+correo);
+			logAjax.open('GET','https://torrewz.000webhostapp.com/PROYECTO2/php/registro.php?u='+user+'&p='+pass+'&c='+correo);
 			logAjax.send();
 			logAjax.onreadystatechange = function(){
 				if (logAjax.readyState==4 && logAjax.status == 200) {
 					if (logAjax.responseText!="0") {
-						window.location.assign('login.html');
+						showSnackbar('Registrado con exito',1500);
+						setTimeout(function(){ 
+    						showSnackbar('Se redirige a Login',1000);
+						}, 1550);
+						setTimeout(function(){ 
+    						window.location.assign('login.html');
+						}, 3100);
+						
 					}else{
 
 					}
@@ -147,7 +154,7 @@ function registrar(){
 
 function set(){
 	id = localStorage.getItem('idUsuario');
-	document.getElementById('up').setAttribute("action","php/upload.php/?&id="+id)
+	document.getElementById('up').setAttribute("action","https://torrewz.000webhostapp.com/PROYECTO2/php/upload.php/?&id="+id)
 }
 
 function foto(){
@@ -160,7 +167,7 @@ item = document.getElementById('foto');
 	
 			//REGISTRAR
 			logAjax = new XMLHttpRequest();
-			logAjax.open('GET','http://192.168.1.73:8080/PROYECTO2/php/validarFoto.php?id='+id);
+			logAjax.open('GET','https://torrewz.000webhostapp.com/PROYECTO2/php/validarFoto.php?id='+id);
 			logAjax.send();
 			logAjax.onreadystatechange = function(){
 				if (logAjax.readyState==4 && logAjax.status == 200) {
@@ -178,7 +185,7 @@ function cargarFoto(){
 	idUser = localStorage.getItem('idRate');
 
 	fotoAjax = new XMLHttpRequest();
-	fotoAjax.open('GET','http://192.168.1.73:8080/PROYECTO2/php/foto.php?&id='+idUser);
+	fotoAjax.open('GET','https://torrewz.000webhostapp.com/PROYECTO2/php/foto.php?&id='+idUser);
 	fotoAjax.send();
 	fotoAjax.onreadystatechange = function(){
 		if (fotoAjax.readyState == 4 && fotoAjax.status == 200){
@@ -187,8 +194,9 @@ function cargarFoto(){
 			if (foto.length>0) {
 					for(i=0; i<foto.length; i++){
 
-									div = "<img src="+foto[i].direccion+">";
+									div = "<img src=https://torrewz.000webhostapp.com/PROYECTO2/"+foto[i].direccion+">";
 									document.querySelector('article').innerHTML += div;
+									cargarDatos();
 									
 								}
 
@@ -197,6 +205,7 @@ function cargarFoto(){
 
 				div = "<img src='img/default.png'>";
 									document.querySelector('article').innerHTML += div;
+									cargarDatos();
 
 
 			}
@@ -210,7 +219,7 @@ function cargarDatos(){
 	idUser = localStorage.getItem('idRate');
 
 	datosAjax = new XMLHttpRequest();
-	datosAjax.open('GET','http://192.168.1.73:8080/PROYECTO2/php/datos.php?&id='+idUser);
+	datosAjax.open('GET','https://torrewz.000webhostapp.com/PROYECTO2/php/datos.php?&id='+idUser);
 	datosAjax.send();
 	datosAjax.onreadystatechange = function(){
 		if (datosAjax.readyState == 4 && datosAjax.status == 200){
@@ -248,14 +257,28 @@ function score(){
 	}
 	idUser = localStorage.getItem('idRate');
 	starAjax = new XMLHttpRequest();
-	starAjax.open('GET','http://192.168.1.73:8080/PROYECTO2/php/score.php?&id='+idUser+'&rate='+puntaje);
+	starAjax.open('GET','https://torrewz.000webhostapp.com/PROYECTO2/php/score.php?&id='+idUser+'&rate='+puntaje);
 	starAjax.send();
 	starAjax.onreadystatechange = function(){
 		if (starAjax.readyState == 4 && starAjax.status == 200){
 
-			alert(starAjax.responseText);
+			location.reload();
 
 		}
 	}
 
+}
+
+function showSnackbar(text, time) {
+    // Get the snackbar DIV
+    var x = document.getElementById("snackbar")
+
+    // Add the "show" class to DIV
+    x.className = "show";
+    x.innerHTML = text;
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ 
+    	x.className = x.className.replace("show", ""); 
+	}, time);
 }
